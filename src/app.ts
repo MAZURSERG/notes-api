@@ -11,6 +11,14 @@ const { errorHandler } = require("./middlewares/errorHandler");
 
 const app = express();
 
+const corsOptions = {
+    origin: "*",        // разрешаем все источники
+    methods: "GET,POST,PUT,DELETE",
+    allowedHeaders: "Content-Type"
+  };
+
+app.options("*", cors(corsOptions));
+app.use(cors(corsOptions));
 app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
