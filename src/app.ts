@@ -3,6 +3,8 @@ import type { Request, Response } from "express";
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("./swagger");
 
 const noteRouter = require("./routes/note.routes");
 const { errorHandler } = require("./middlewares/errorHandler");
@@ -17,6 +19,10 @@ app.get("/health", (_req: Request, res: Response) => {
   res.json({ status: "ok" });
 });
 
+// Swagger UI по адресу /docs
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+// Основные роуты
 app.use("/api", noteRouter);
 app.use(errorHandler);
 
