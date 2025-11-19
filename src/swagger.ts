@@ -5,24 +5,23 @@ const swaggerDocument = {
       version: "1.0.0",
       description: "Simple Notes API built with Node.js, TypeScript and MongoDB"
     },
+    // Делаем сервера универсальными: прод + локально
     servers: [
-        {
-          url: "https://notes-api-kjph.onrender.com",
-          description: "Production server (Render)"
-        },
-        {
-          url: "http://localhost:4000",
-          description: "Local server"
-        }
-      ],
+      {
+        url: "https://notes-api-kjph.onrender.com",
+        description: "Render production server"
+      },
+      {
+        url: "http://localhost:4000",
+        description: "Local development server"
+      }
+    ],
     paths: {
       "/health": {
         get: {
           summary: "Health check",
           responses: {
-            "200": {
-              description: "Server is healthy"
-            }
+            "200": { description: "Server is healthy" }
           }
         }
       },
@@ -30,9 +29,7 @@ const swaggerDocument = {
         get: {
           summary: "Get all notes",
           responses: {
-            "200": {
-              description: "List of notes"
-            }
+            "200": { description: "List of notes" }
           }
         },
         post: {
@@ -41,19 +38,13 @@ const swaggerDocument = {
             required: true,
             content: {
               "application/json": {
-                schema: {
-                  $ref: "#/components/schemas/CreateNoteInput"
-                }
+                schema: { $ref: "#/components/schemas/CreateNoteInput" }
               }
             }
           },
           responses: {
-            "201": {
-              description: "Note created"
-            },
-            "400": {
-              description: "Validation error"
-            }
+            "201": { description: "Note created" },
+            "400": { description: "Validation error" }
           }
         }
       },
@@ -87,9 +78,7 @@ const swaggerDocument = {
             required: true,
             content: {
               "application/json": {
-                schema: {
-                  $ref: "#/components/schemas/UpdateNoteInput"
-                }
+                schema: { $ref: "#/components/schemas/UpdateNoteInput" }
               }
             }
           },

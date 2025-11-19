@@ -19,10 +19,9 @@ app.get("/health", (_req: Request, res: Response) => {
   res.json({ status: "ok" });
 });
 
-// Swagger UI по адресу /docs
+// Swagger — до основных роутов и до errorHandler
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-// Основные роуты
 app.use("/api", noteRouter);
 app.use(errorHandler);
 
