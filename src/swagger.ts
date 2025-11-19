@@ -6,11 +6,15 @@ const swaggerDocument = {
       description: "Simple Notes API built with Node.js, TypeScript and MongoDB"
     },
     servers: [
-      {
-        url: "http://localhost:4000",
-        description: "Local server"
-      }
-    ],
+        {
+          url: "https://notes-api-kjph.onrender.com",
+          description: "Production server (Render)"
+        },
+        {
+          url: "http://localhost:4000",
+          description: "Local server"
+        }
+      ],
     paths: {
       "/health": {
         get: {
