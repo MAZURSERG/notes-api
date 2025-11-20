@@ -13,7 +13,7 @@ const app = express();
 
 // Максимально простой и permissive CORS
 app.use(cors());
-app.options("*", cors());
+// app.options("/*", cors());
 
 app.use(morgan("dev"));
 app.use(express.json());
