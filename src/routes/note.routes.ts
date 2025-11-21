@@ -22,6 +22,6 @@ router.get("/notes/:id", getNoteById);
 router.put("/notes/:id", validateResource(updateNoteSchema), updateNote);
 router.delete("/notes/:id", deleteNote);
 
-// ВАЖНО: экспортируем сам router, а не объект { router }
 module.exports = router;
+
 export {};
